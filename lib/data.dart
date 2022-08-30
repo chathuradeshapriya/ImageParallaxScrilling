@@ -1,30 +1,30 @@
 List<Map> paintings = [
   {
-    'image': 'assets/painting6.jpeg',
+    'image': 'images/rice1.png',
     'name': 'The Sower',
   },
   {
-    'image': 'assets/painting2.jpg',
+    'image': 'images/rice2.png',
     'name': 'The Starry Night',
   },
   {
-    'image': 'assets/painting3.jpg',
+    'image': 'images/rice4.jpg',
     'name': 'The Potato Eaters',
   },
   {
-    'image': 'assets/painting4.jpg',
+    'image': 'images/rice1.png',
     'name': 'Irises',
   },
   {
-    'image': 'assets/painting5.jpg',
+    'image': 'images/rice2.png',
     'name': 'Starry Night Over the Rhône',
   },
   {
-    'image': 'assets/painting7.jpg',
+    'image': 'images/rice4.jpg',
     'name': 'Landscape with Snow',
   },
   {
-    'image': 'assets/painting8.jpg',
+    'image': 'images/rice1.png',
     'name': 'The Night Café',
   },
 ];
