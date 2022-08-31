@@ -8,16 +8,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late PageController pageController;
+  double pageOffset = 0;
 
+  @override
   void initState() {
+    super.initState();
     pageController = PageController(viewportFraction: 0.7);
-    // pageController.addListener(() {
-    //   setState(() {
-    //     pageOffset = pageController.page;
-    //   });
-    // }
-    //
-
+    pageController.addListener(() {
+      setState(() {
+        pageOffset = pageController.page!;
+      });
+    });
   }
 
   @override
@@ -79,38 +80,62 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: 20,
                       )),
                 ),
+                Container(
+                  height: 300,
 
-                GestureDetector(
-                  onTap: () {
-                    // print(paintings[i]['name']);
-                  },
-                  child: Container(
-                    height: 300,
-                    padding: EdgeInsets.only(bottom: 30),
-                    child: PageView.builder(
-                        itemCount: paintings.length,
-                        controller: pageController,
-                        itemBuilder: (context, i){
-                          return Transform.scale(scale: 1,
-                          child: Container(
+
+                  padding: EdgeInsets.only(bottom: 30),
+                  child: PageView.builder(
+                      itemCount: paintings.length,
+                      controller: pageController,
+                      itemBuilder: (context, i) {
+                        return Transform.scale(
+                            scale: 1,
+                            child: Container(
+
+
+
+
+
                               padding: EdgeInsets.only(right: 20.0),
                               child: Stack(
                                 children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.asset(paintings[i]['image'],
-                                    height: 370,
-                                    fit: BoxFit.cover,),
-                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.white,
+                                          width: 3
+                                        ),
+                                        borderRadius: BorderRadius.all(Radius.circular(20))
+                                    ),
+                                    child: ClipRRect(
 
-                                 
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: Image.asset(
+                                        paintings[i]['image'],
+                                        height: 370,
+                                        fit: BoxFit.cover,
+                                        alignment:  Alignment(-pageOffset.abs() + i, 0),
+
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                      left: 10,
+                                      bottom: 20,
+                                      right: 10,
+                                      child: Text(
+                                        paintings[i]['name'],
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 35,
+                                          fontStyle: FontStyle.italic,
+                                        ),
+                                      ))
                                 ],
                               ),
-                            )
-
-                          );
-                        }),
-                  ),
+                            ));
+                      }),
                 )
               ],
             )
